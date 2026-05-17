@@ -1,7 +1,6 @@
 const crypto = require("crypto");
 const express = require("express");
 const rate_limit = require("express-rate-limit");
-const sqlite3 = require("sqlite3").verbose();
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -32,13 +31,6 @@ const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
-});
-
-const db = new sqlite3.Database("./database.db", (err) => {
-  if (err) {
-    return console.error("Database connection error", err.message);
-  }
-  console.log("Connected to Database");
 });
 
 app.get("/api/hello", (req, res) => {
